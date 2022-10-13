@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather/data/weather_data_source.dart';
 
 import 'package:weather/presentation/widgets/background.dart';
 import 'package:weather/utils/app_constants.dart';
@@ -41,6 +42,7 @@ class SearchScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pushNamed('/today');
+                    // WeatherDataSource().getWeather('Лондон');
                   },
                   child: const Text(AppText.confirm),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/detailed_weather.dart';
+
+import 'package:weather/presentation/detailed_weather_screen.dart';
 import 'package:weather/presentation/search_screen.dart';
 import 'package:weather/presentation/today_weather_screen.dart';
 import 'package:weather/utils/app_constants.dart';

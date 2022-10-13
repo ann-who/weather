@@ -21,6 +21,9 @@ class AppText {
   static const String temperature = 'Температура';
   static const String humidity = 'Влажность';
   static const String windVelocity = 'Скорость ветра';
+  static const String notFoundError = 'Погода в выбранном городе не найдена';
+  static const String unknownError =
+      'Что-то пошло не так... Попробуйте позже ещё раз';
 }
 
 class AppWidgetsSetting {
@@ -45,4 +48,11 @@ class AppWidgetsSetting {
 class AppColors {
   static const Color appBarBackground = Color(0xFF2d7d90);
   static const Color elements = Color(0xFF22577A);
+}
+
+class AppApi {
+  static const String baseUrl = 'http://api.openweathermap.org';
+  static const int connectTimeout = 5000;
+  static const int receiveTimeout = 3000;
+  static const String myApiKey = '6ac25f5ff4cb48f2640c147760384f4b';
 }
