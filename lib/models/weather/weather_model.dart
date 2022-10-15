@@ -5,30 +5,31 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'weather_model.freezed.dart';
 part 'weather_model.g.dart';
 
+/// City model generated with freezed
 @freezed
-@JsonSerializable(explicitToJson: true)
-class Weather with _$Weather {
-  const factory Weather({
-    String? cod,
-    List<WeatherList>? list,
-    City? city,
-  }) = _Weather;
-
-  factory Weather.fromJson(Map<String, Object?> json) =>
-      _$WeatherFromJson(json);
-}
-
-@freezed
-@JsonSerializable(explicitToJson: true)
 class WeatherList with _$WeatherList {
   const factory WeatherList({
-    int? dt,
-    MainWeatherInfo? mainInfo,
-    Wind? wind,
+    @JsonKey(name: 'list') required List<WeatherUnit> units,
   }) = _WeatherList;
 
   factory WeatherList.fromJson(Map<String, Object?> json) =>
       _$WeatherListFromJson(json);
+}
+
+@freezed
+class WeatherUnit with _$WeatherUnit {
+  const WeatherUnit._();
+  const factory WeatherUnit({
+    int? dt,
+    @JsonKey(name: 'main') MainWeatherInfo? mainInfo,
+    Wind? wind,
+  }) = _WeatherUnit;
+
+  // Convert date to a readable format
+  DateTime get dateTime => DateTime.fromMillisecondsSinceEpoch(dt! * 1000);
+
+  factory WeatherUnit.fromJson(Map<String, Object?> json) =>
+      _$WeatherUnitFromJson(json);
 }
 
 @freezed
@@ -49,13 +50,4 @@ class Wind with _$Wind {
   }) = _Wind;
 
   factory Wind.fromJson(Map<String, Object?> json) => _$WindFromJson(json);
-}
-
-@freezed
-class City with _$City {
-  const factory City({
-    String? name,
-  }) = _City;
-
-  factory City.fromJson(Map<String, Object?> json) => _$CityFromJson(json);
 }

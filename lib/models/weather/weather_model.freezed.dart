@@ -14,205 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Weather _$WeatherFromJson(Map<String, dynamic> json) {
-  return _Weather.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Weather {
-  String? get cod => throw _privateConstructorUsedError;
-  List<WeatherList>? get list => throw _privateConstructorUsedError;
-  City? get city => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $WeatherCopyWith<Weather> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WeatherCopyWith<$Res> {
-  factory $WeatherCopyWith(Weather value, $Res Function(Weather) then) =
-      _$WeatherCopyWithImpl<$Res>;
-  $Res call({String? cod, List<WeatherList>? list, City? city});
-
-  $CityCopyWith<$Res>? get city;
-}
-
-/// @nodoc
-class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
-  _$WeatherCopyWithImpl(this._value, this._then);
-
-  final Weather _value;
-  // ignore: unused_field
-  final $Res Function(Weather) _then;
-
-  @override
-  $Res call({
-    Object? cod = freezed,
-    Object? list = freezed,
-    Object? city = freezed,
-  }) {
-    return _then(_value.copyWith(
-      cod: cod == freezed
-          ? _value.cod
-          : cod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      list: list == freezed
-          ? _value.list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<WeatherList>?,
-      city: city == freezed
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as City?,
-    ));
-  }
-
-  @override
-  $CityCopyWith<$Res>? get city {
-    if (_value.city == null) {
-      return null;
-    }
-
-    return $CityCopyWith<$Res>(_value.city!, (value) {
-      return _then(_value.copyWith(city: value));
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
-  factory _$$_WeatherCopyWith(
-          _$_Weather value, $Res Function(_$_Weather) then) =
-      __$$_WeatherCopyWithImpl<$Res>;
-  @override
-  $Res call({String? cod, List<WeatherList>? list, City? city});
-
-  @override
-  $CityCopyWith<$Res>? get city;
-}
-
-/// @nodoc
-class __$$_WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
-    implements _$$_WeatherCopyWith<$Res> {
-  __$$_WeatherCopyWithImpl(_$_Weather _value, $Res Function(_$_Weather) _then)
-      : super(_value, (v) => _then(v as _$_Weather));
-
-  @override
-  _$_Weather get _value => super._value as _$_Weather;
-
-  @override
-  $Res call({
-    Object? cod = freezed,
-    Object? list = freezed,
-    Object? city = freezed,
-  }) {
-    return _then(_$_Weather(
-      cod: cod == freezed
-          ? _value.cod
-          : cod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      list: list == freezed
-          ? _value._list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<WeatherList>?,
-      city: city == freezed
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as City?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(explicitToJson: true)
-class _$_Weather implements _Weather {
-  const _$_Weather({this.cod, final List<WeatherList>? list, this.city})
-      : _list = list;
-
-  factory _$_Weather.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherFromJson(json);
-
-  @override
-  final String? cod;
-  final List<WeatherList>? _list;
-  @override
-  List<WeatherList>? get list {
-    final value = _list;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  final City? city;
-
-  @override
-  String toString() {
-    return 'Weather(cod: $cod, list: $list, city: $city)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Weather &&
-            const DeepCollectionEquality().equals(other.cod, cod) &&
-            const DeepCollectionEquality().equals(other._list, _list) &&
-            const DeepCollectionEquality().equals(other.city, city));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(cod),
-      const DeepCollectionEquality().hash(_list),
-      const DeepCollectionEquality().hash(city));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_WeatherCopyWith<_$_Weather> get copyWith =>
-      __$$_WeatherCopyWithImpl<_$_Weather>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_WeatherToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Weather implements Weather {
-  const factory _Weather(
-      {final String? cod,
-      final List<WeatherList>? list,
-      final City? city}) = _$_Weather;
-
-  factory _Weather.fromJson(Map<String, dynamic> json) = _$_Weather.fromJson;
-
-  @override
-  String? get cod;
-  @override
-  List<WeatherList>? get list;
-  @override
-  City? get city;
-  @override
-  @JsonKey(ignore: true)
-  _$$_WeatherCopyWith<_$_Weather> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
 WeatherList _$WeatherListFromJson(Map<String, dynamic> json) {
   return _WeatherList.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WeatherList {
-  int? get dt => throw _privateConstructorUsedError;
-  MainWeatherInfo? get mainInfo => throw _privateConstructorUsedError;
-  Wind? get wind => throw _privateConstructorUsedError;
+  @JsonKey(name: 'list')
+  List<WeatherUnit> get units => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -225,10 +34,7 @@ abstract class $WeatherListCopyWith<$Res> {
   factory $WeatherListCopyWith(
           WeatherList value, $Res Function(WeatherList) then) =
       _$WeatherListCopyWithImpl<$Res>;
-  $Res call({int? dt, MainWeatherInfo? mainInfo, Wind? wind});
-
-  $MainWeatherInfoCopyWith<$Res>? get mainInfo;
-  $WindCopyWith<$Res>? get wind;
+  $Res call({@JsonKey(name: 'list') List<WeatherUnit> units});
 }
 
 /// @nodoc
@@ -238,6 +44,155 @@ class _$WeatherListCopyWithImpl<$Res> implements $WeatherListCopyWith<$Res> {
   final WeatherList _value;
   // ignore: unused_field
   final $Res Function(WeatherList) _then;
+
+  @override
+  $Res call({
+    Object? units = freezed,
+  }) {
+    return _then(_value.copyWith(
+      units: units == freezed
+          ? _value.units
+          : units // ignore: cast_nullable_to_non_nullable
+              as List<WeatherUnit>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_WeatherListCopyWith<$Res>
+    implements $WeatherListCopyWith<$Res> {
+  factory _$$_WeatherListCopyWith(
+          _$_WeatherList value, $Res Function(_$_WeatherList) then) =
+      __$$_WeatherListCopyWithImpl<$Res>;
+  @override
+  $Res call({@JsonKey(name: 'list') List<WeatherUnit> units});
+}
+
+/// @nodoc
+class __$$_WeatherListCopyWithImpl<$Res> extends _$WeatherListCopyWithImpl<$Res>
+    implements _$$_WeatherListCopyWith<$Res> {
+  __$$_WeatherListCopyWithImpl(
+      _$_WeatherList _value, $Res Function(_$_WeatherList) _then)
+      : super(_value, (v) => _then(v as _$_WeatherList));
+
+  @override
+  _$_WeatherList get _value => super._value as _$_WeatherList;
+
+  @override
+  $Res call({
+    Object? units = freezed,
+  }) {
+    return _then(_$_WeatherList(
+      units: units == freezed
+          ? _value._units
+          : units // ignore: cast_nullable_to_non_nullable
+              as List<WeatherUnit>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_WeatherList implements _WeatherList {
+  const _$_WeatherList(
+      {@JsonKey(name: 'list') required final List<WeatherUnit> units})
+      : _units = units;
+
+  factory _$_WeatherList.fromJson(Map<String, dynamic> json) =>
+      _$$_WeatherListFromJson(json);
+
+  final List<WeatherUnit> _units;
+  @override
+  @JsonKey(name: 'list')
+  List<WeatherUnit> get units {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_units);
+  }
+
+  @override
+  String toString() {
+    return 'WeatherList(units: $units)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WeatherList &&
+            const DeepCollectionEquality().equals(other._units, _units));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_units));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_WeatherListCopyWith<_$_WeatherList> get copyWith =>
+      __$$_WeatherListCopyWithImpl<_$_WeatherList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_WeatherListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WeatherList implements WeatherList {
+  const factory _WeatherList(
+          {@JsonKey(name: 'list') required final List<WeatherUnit> units}) =
+      _$_WeatherList;
+
+  factory _WeatherList.fromJson(Map<String, dynamic> json) =
+      _$_WeatherList.fromJson;
+
+  @override
+  @JsonKey(name: 'list')
+  List<WeatherUnit> get units;
+  @override
+  @JsonKey(ignore: true)
+  _$$_WeatherListCopyWith<_$_WeatherList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+WeatherUnit _$WeatherUnitFromJson(Map<String, dynamic> json) {
+  return _WeatherUnit.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WeatherUnit {
+  int? get dt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'main')
+  MainWeatherInfo? get mainInfo => throw _privateConstructorUsedError;
+  Wind? get wind => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WeatherUnitCopyWith<WeatherUnit> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WeatherUnitCopyWith<$Res> {
+  factory $WeatherUnitCopyWith(
+          WeatherUnit value, $Res Function(WeatherUnit) then) =
+      _$WeatherUnitCopyWithImpl<$Res>;
+  $Res call(
+      {int? dt, @JsonKey(name: 'main') MainWeatherInfo? mainInfo, Wind? wind});
+
+  $MainWeatherInfoCopyWith<$Res>? get mainInfo;
+  $WindCopyWith<$Res>? get wind;
+}
+
+/// @nodoc
+class _$WeatherUnitCopyWithImpl<$Res> implements $WeatherUnitCopyWith<$Res> {
+  _$WeatherUnitCopyWithImpl(this._value, this._then);
+
+  final WeatherUnit _value;
+  // ignore: unused_field
+  final $Res Function(WeatherUnit) _then;
 
   @override
   $Res call({
@@ -285,13 +240,14 @@ class _$WeatherListCopyWithImpl<$Res> implements $WeatherListCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_WeatherListCopyWith<$Res>
-    implements $WeatherListCopyWith<$Res> {
-  factory _$$_WeatherListCopyWith(
-          _$_WeatherList value, $Res Function(_$_WeatherList) then) =
-      __$$_WeatherListCopyWithImpl<$Res>;
+abstract class _$$_WeatherUnitCopyWith<$Res>
+    implements $WeatherUnitCopyWith<$Res> {
+  factory _$$_WeatherUnitCopyWith(
+          _$_WeatherUnit value, $Res Function(_$_WeatherUnit) then) =
+      __$$_WeatherUnitCopyWithImpl<$Res>;
   @override
-  $Res call({int? dt, MainWeatherInfo? mainInfo, Wind? wind});
+  $Res call(
+      {int? dt, @JsonKey(name: 'main') MainWeatherInfo? mainInfo, Wind? wind});
 
   @override
   $MainWeatherInfoCopyWith<$Res>? get mainInfo;
@@ -300,14 +256,14 @@ abstract class _$$_WeatherListCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WeatherListCopyWithImpl<$Res> extends _$WeatherListCopyWithImpl<$Res>
-    implements _$$_WeatherListCopyWith<$Res> {
-  __$$_WeatherListCopyWithImpl(
-      _$_WeatherList _value, $Res Function(_$_WeatherList) _then)
-      : super(_value, (v) => _then(v as _$_WeatherList));
+class __$$_WeatherUnitCopyWithImpl<$Res> extends _$WeatherUnitCopyWithImpl<$Res>
+    implements _$$_WeatherUnitCopyWith<$Res> {
+  __$$_WeatherUnitCopyWithImpl(
+      _$_WeatherUnit _value, $Res Function(_$_WeatherUnit) _then)
+      : super(_value, (v) => _then(v as _$_WeatherUnit));
 
   @override
-  _$_WeatherList get _value => super._value as _$_WeatherList;
+  _$_WeatherUnit get _value => super._value as _$_WeatherUnit;
 
   @override
   $Res call({
@@ -315,7 +271,7 @@ class __$$_WeatherListCopyWithImpl<$Res> extends _$WeatherListCopyWithImpl<$Res>
     Object? mainInfo = freezed,
     Object? wind = freezed,
   }) {
-    return _then(_$_WeatherList(
+    return _then(_$_WeatherUnit(
       dt: dt == freezed
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
@@ -333,31 +289,33 @@ class __$$_WeatherListCopyWithImpl<$Res> extends _$WeatherListCopyWithImpl<$Res>
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$_WeatherUnit extends _WeatherUnit {
+  const _$_WeatherUnit(
+      {this.dt, @JsonKey(name: 'main') this.mainInfo, this.wind})
+      : super._();
 
-@JsonSerializable(explicitToJson: true)
-class _$_WeatherList implements _WeatherList {
-  const _$_WeatherList({this.dt, this.mainInfo, this.wind});
-
-  factory _$_WeatherList.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherListFromJson(json);
+  factory _$_WeatherUnit.fromJson(Map<String, dynamic> json) =>
+      _$$_WeatherUnitFromJson(json);
 
   @override
   final int? dt;
   @override
+  @JsonKey(name: 'main')
   final MainWeatherInfo? mainInfo;
   @override
   final Wind? wind;
 
   @override
   String toString() {
-    return 'WeatherList(dt: $dt, mainInfo: $mainInfo, wind: $wind)';
+    return 'WeatherUnit(dt: $dt, mainInfo: $mainInfo, wind: $wind)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherList &&
+            other is _$_WeatherUnit &&
             const DeepCollectionEquality().equals(other.dt, dt) &&
             const DeepCollectionEquality().equals(other.mainInfo, mainInfo) &&
             const DeepCollectionEquality().equals(other.wind, wind));
@@ -373,35 +331,37 @@ class _$_WeatherList implements _WeatherList {
 
   @JsonKey(ignore: true)
   @override
-  _$$_WeatherListCopyWith<_$_WeatherList> get copyWith =>
-      __$$_WeatherListCopyWithImpl<_$_WeatherList>(this, _$identity);
+  _$$_WeatherUnitCopyWith<_$_WeatherUnit> get copyWith =>
+      __$$_WeatherUnitCopyWithImpl<_$_WeatherUnit>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherListToJson(
+    return _$$_WeatherUnitToJson(
       this,
     );
   }
 }
 
-abstract class _WeatherList implements WeatherList {
-  const factory _WeatherList(
+abstract class _WeatherUnit extends WeatherUnit {
+  const factory _WeatherUnit(
       {final int? dt,
-      final MainWeatherInfo? mainInfo,
-      final Wind? wind}) = _$_WeatherList;
+      @JsonKey(name: 'main') final MainWeatherInfo? mainInfo,
+      final Wind? wind}) = _$_WeatherUnit;
+  const _WeatherUnit._() : super._();
 
-  factory _WeatherList.fromJson(Map<String, dynamic> json) =
-      _$_WeatherList.fromJson;
+  factory _WeatherUnit.fromJson(Map<String, dynamic> json) =
+      _$_WeatherUnit.fromJson;
 
   @override
   int? get dt;
   @override
+  @JsonKey(name: 'main')
   MainWeatherInfo? get mainInfo;
   @override
   Wind? get wind;
   @override
   @JsonKey(ignore: true)
-  _$$_WeatherListCopyWith<_$_WeatherList> get copyWith =>
+  _$$_WeatherUnitCopyWith<_$_WeatherUnit> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -680,128 +640,4 @@ abstract class _Wind implements Wind {
   @override
   @JsonKey(ignore: true)
   _$$_WindCopyWith<_$_Wind> get copyWith => throw _privateConstructorUsedError;
-}
-
-City _$CityFromJson(Map<String, dynamic> json) {
-  return _City.fromJson(json);
-}
-
-/// @nodoc
-mixin _$City {
-  String? get name => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CityCopyWith<City> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CityCopyWith<$Res> {
-  factory $CityCopyWith(City value, $Res Function(City) then) =
-      _$CityCopyWithImpl<$Res>;
-  $Res call({String? name});
-}
-
-/// @nodoc
-class _$CityCopyWithImpl<$Res> implements $CityCopyWith<$Res> {
-  _$CityCopyWithImpl(this._value, this._then);
-
-  final City _value;
-  // ignore: unused_field
-  final $Res Function(City) _then;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_CityCopyWith<$Res> implements $CityCopyWith<$Res> {
-  factory _$$_CityCopyWith(_$_City value, $Res Function(_$_City) then) =
-      __$$_CityCopyWithImpl<$Res>;
-  @override
-  $Res call({String? name});
-}
-
-/// @nodoc
-class __$$_CityCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res>
-    implements _$$_CityCopyWith<$Res> {
-  __$$_CityCopyWithImpl(_$_City _value, $Res Function(_$_City) _then)
-      : super(_value, (v) => _then(v as _$_City));
-
-  @override
-  _$_City get _value => super._value as _$_City;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-  }) {
-    return _then(_$_City(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_City implements _City {
-  const _$_City({this.name});
-
-  factory _$_City.fromJson(Map<String, dynamic> json) => _$$_CityFromJson(json);
-
-  @override
-  final String? name;
-
-  @override
-  String toString() {
-    return 'City(name: $name)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_City &&
-            const DeepCollectionEquality().equals(other.name, name));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_CityCopyWith<_$_City> get copyWith =>
-      __$$_CityCopyWithImpl<_$_City>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CityToJson(
-      this,
-    );
-  }
-}
-
-abstract class _City implements City {
-  const factory _City({final String? name}) = _$_City;
-
-  factory _City.fromJson(Map<String, dynamic> json) = _$_City.fromJson;
-
-  @override
-  String? get name;
-  @override
-  @JsonKey(ignore: true)
-  _$$_CityCopyWith<_$_City> get copyWith => throw _privateConstructorUsedError;
 }

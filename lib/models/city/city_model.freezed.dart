@@ -22,7 +22,7 @@ City _$CityFromJson(Map<String, dynamic> json) {
 mixin _$City {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'local_names')
-  Set<dynamic>? get localNames => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get localNames => throw _privateConstructorUsedError;
   double? get lat => throw _privateConstructorUsedError;
   double? get lon => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $CityCopyWith<$Res> {
       _$CityCopyWithImpl<$Res>;
   $Res call(
       {String? name,
-      @JsonKey(name: 'local_names') Set<dynamic>? localNames,
+      @JsonKey(name: 'local_names') Map<dynamic, dynamic>? localNames,
       double? lat,
       double? lon,
       String? country,
@@ -71,7 +71,7 @@ class _$CityCopyWithImpl<$Res> implements $CityCopyWith<$Res> {
       localNames: localNames == freezed
           ? _value.localNames
           : localNames // ignore: cast_nullable_to_non_nullable
-              as Set<dynamic>?,
+              as Map<dynamic, dynamic>?,
       lat: lat == freezed
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$_CityCopyWith<$Res> implements $CityCopyWith<$Res> {
   @override
   $Res call(
       {String? name,
-      @JsonKey(name: 'local_names') Set<dynamic>? localNames,
+      @JsonKey(name: 'local_names') Map<dynamic, dynamic>? localNames,
       double? lat,
       double? lon,
       String? country,
@@ -132,7 +132,7 @@ class __$$_CityCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res>
       localNames: localNames == freezed
           ? _value._localNames
           : localNames // ignore: cast_nullable_to_non_nullable
-              as Set<dynamic>?,
+              as Map<dynamic, dynamic>?,
       lat: lat == freezed
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -154,12 +154,11 @@ class __$$_CityCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class _$_City implements _City {
   const _$_City(
       {this.name,
-      @JsonKey(name: 'local_names') final Set<dynamic>? localNames,
+      @JsonKey(name: 'local_names') final Map<dynamic, dynamic>? localNames,
       this.lat,
       this.lon,
       this.country,
@@ -170,14 +169,14 @@ class _$_City implements _City {
 
   @override
   final String? name;
-  final Set<dynamic>? _localNames;
+  final Map<dynamic, dynamic>? _localNames;
   @override
   @JsonKey(name: 'local_names')
-  Set<dynamic>? get localNames {
+  Map<dynamic, dynamic>? get localNames {
     final value = _localNames;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(value);
+    return EqualUnmodifiableMapView(value);
   }
 
   @override
@@ -235,7 +234,7 @@ class _$_City implements _City {
 abstract class _City implements City {
   const factory _City(
       {final String? name,
-      @JsonKey(name: 'local_names') final Set<dynamic>? localNames,
+      @JsonKey(name: 'local_names') final Map<dynamic, dynamic>? localNames,
       final double? lat,
       final double? lon,
       final String? country,
@@ -247,7 +246,7 @@ abstract class _City implements City {
   String? get name;
   @override
   @JsonKey(name: 'local_names')
-  Set<dynamic>? get localNames;
+  Map<dynamic, dynamic>? get localNames;
   @override
   double? get lat;
   @override

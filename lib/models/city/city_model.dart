@@ -5,12 +5,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'city_model.freezed.dart';
 part 'city_model.g.dart';
 
+/// City model generated with freezed
+
 @freezed
 class City with _$City {
-  @JsonSerializable(explicitToJson: true)
   const factory City({
     String? name,
-    @JsonKey(name: 'local_names') Set? localNames,
+    @JsonKey(name: 'local_names') Map? localNames,
     double? lat,
     double? lon,
     String? country,

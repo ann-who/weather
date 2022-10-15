@@ -1,10 +1,11 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:weather/models/city/city_model.dart';
 import 'package:weather/models/weather/weather_model.dart';
 import 'package:weather/utils/app_constants.dart';
 
+/// Class to work with API
 class WeatherDataSource {
   final Dio _dio = Dio(
     BaseOptions(
@@ -14,11 +15,12 @@ class WeatherDataSource {
     ),
   );
 
-  Future getCityName() async {
+  /// Send request to get cities list with their coordinates
+  Future<List<City>> getCitiesName(String partialName) async {
     Response response;
     try {
-      response = await _dio.get('/geo/1.0/', queryParameters: {
-        'q': '',
+      response = await _dio.get('/geo/1.0/direct', queryParameters: {
+        'q': partialName,
         'appid': AppApi.myApiKey,
       });
     } on DioError catch (e) {
@@ -36,17 +38,19 @@ class WeatherDataSource {
     }
 
     var result = response.data;
-    return Weather.fromJson(json.decode(result));
+    return (result as List).map((cityJson) => City.fromJson(cityJson)).toList();
   }
 
-  Future<Weather> getWeather(String cityName) async {
+  /// Send request to get weather based on city coordinates
+  Future<WeatherList> getWeather(City city) async {
     Response response;
     try {
       response = await _dio.get('/data/2.5/forecast', queryParameters: {
-        'lat': '44.34',
-        'lon': '10.99',
+        'lat': city.lat,
+        'lon': city.lon,
         'appid': AppApi.myApiKey,
-        'units': 'metric'
+        'units': 'metric',
+        'lang': 'ru',
       });
     } on DioError catch (e) {
       if (e.response == null) {
@@ -63,15 +67,6 @@ class WeatherDataSource {
     }
 
     var result = response.data;
-    return Weather.fromJson(json.decode(result));
-
-    // var result = json.decode(response.data);
-    // var weatherFullInfo =
-    //     (result.map<Weather>((weather) => Weather.fromJson(weather))).toList();
-    // return weatherFullInfo;
-
-    //  Map<String, dynamic> result = json.decode(response.data);
-    // List<Weather> weatherFullInfo = result[''];
-    // return weatherFullInfo;
+    return WeatherList.fromJson(result);
   }
 }
