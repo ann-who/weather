@@ -1,78 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/detailed_weather.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/business_logic/city_search/bloc_for_city_search.dart';
+import 'package:weather/business_logic/weather_screens/bloc_for_weather.dart';
+import 'package:weather/data/weather_data_source.dart';
+import 'package:weather/models/city/city_model.dart';
+import 'package:weather/models/weather/weather_model.dart';
+import 'package:weather/presentation/detailed_weather_screen.dart';
+
 import 'package:weather/presentation/search_screen.dart';
 import 'package:weather/presentation/today_weather_screen.dart';
-import 'package:weather/utils/app_constants.dart';
+import 'package:weather/utils/app_theme.dart';
 
 void main() => runApp(const MyApp());
 
+/// Class that contains the app.
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      /// Here are the general widget settings, which allows us to reuse the same UI elements
-      /// and increase the readability of the code, since we do not litter the layout code with repeated values.
+    return RepositoryProvider(
+      create: (context) => WeatherDataSource(),
+      child: MaterialApp(
+        theme: AppTheme.theme(),
+        home: BlocProvider(
+          create: (context) => CitySearchBloc(
+            weatherDataSource:
+                RepositoryProvider.of<WeatherDataSource>(context),
+          ),
+          child: const SearchScreen(),
+        ),
+        onGenerateRoute: (settings) {
+          if (settings.name == TodayWeatherScreen.routeName) {
+            final city = settings.arguments as City;
+            return MaterialPageRoute(
+              builder: (context) {
+                return BlocProvider(
+                  create: (context) => WeatherBloc(
+                    weatherDataSource:
+                        RepositoryProvider.of<WeatherDataSource>(context),
+                  )..add(CityChanged(city)),
+                  child: TodayWeatherScreen(city: city),
+                );
+              },
+            );
+          }
+          if (settings.name == DetailedWeatherScreen.routeName) {
+            var args = settings.arguments! as List;
+            final cityName = args[0] as String;
+            final weather = args[1] as List<WeatherUnit>;
 
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: AppColors.appBarBackground,
-        ),
-        dividerTheme: const DividerThemeData(
-          color: AppColors.elements,
-          thickness: AppWidgetsSetting.dividerThickness,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(AppWidgetsSetting.borderRadius),
-              ),
-            ),
-            backgroundColor:
-                MaterialStateProperty.all<Color>(AppColors.elements),
-            minimumSize: MaterialStateProperty.all<Size>(
-              const Size.fromHeight(AppWidgetsSetting.buttonHeight),
-            ),
-          ),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppWidgetsSetting.borderRadius),
-            borderSide: const BorderSide(
-              color: AppColors.elements,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppWidgetsSetting.borderRadius),
-            borderSide: const BorderSide(
-              color: AppColors.elements,
-            ),
-          ),
-        ),
-        textTheme: const TextTheme(
-          headline1: TextStyle(
-            fontSize: AppWidgetsSetting.headlineText,
-            fontWeight: FontWeight.w500,
-          ),
-          bodyText1: TextStyle(
-            fontSize: AppWidgetsSetting.regularText,
-            fontWeight: FontWeight.w400,
-          ),
-          button: TextStyle(
-            fontSize: AppWidgetsSetting.buttonText,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
+            return MaterialPageRoute(
+              builder: (context) {
+                return DetailedWeatherScreen(
+                  cityName: cityName,
+                  weather: weather,
+                );
+              },
+            );
+          }
+
+          assert(false, 'Need to implement ${settings.name}');
+          return null;
+        },
+        debugShowCheckedModeBanner: false,
       ),
-      routes: {
-        '/': (context) => const SearchScreen(),
-        '/today': (context) => const TodayWeatherScreen(),
-        '/detailed': (context) => const DetailedWeatherScreen(),
-      },
-      debugShowCheckedModeBanner: false,
     );
   }
 }
