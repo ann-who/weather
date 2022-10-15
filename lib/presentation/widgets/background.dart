@@ -1,8 +1,8 @@
-/// Extract this widget to avoid code repetition
-
 import 'package:flutter/material.dart';
 import 'package:weather/utils/app_constants.dart';
 
+/// Class with background image.
+/// Extract this widget to avoid code repetition and increase code readability.
 class ScreenBackground extends StatelessWidget {
   const ScreenBackground({
     Key? key,
